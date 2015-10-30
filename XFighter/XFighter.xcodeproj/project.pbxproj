@@ -12,10 +12,12 @@
 		199CFE8F1BE1D00C0037AA23 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199CFE8E1BE1D00C0037AA23 /* GameScene.swift */; };
 		199CFE911BE1D00C0037AA23 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199CFE901BE1D00C0037AA23 /* GameViewController.swift */; };
 		199CFE941BE1D00C0037AA23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 199CFE921BE1D00C0037AA23 /* Main.storyboard */; };
-		199CFE961BE1D00C0037AA23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 199CFE951BE1D00C0037AA23 /* Assets.xcassets */; };
 		199CFE991BE1D00C0037AA23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 199CFE971BE1D00C0037AA23 /* LaunchScreen.storyboard */; };
 		199CFEA41BE1D00D0037AA23 /* XFighterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199CFEA31BE1D00D0037AA23 /* XFighterTests.swift */; };
 		199CFEAF1BE1D00D0037AA23 /* XFighterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199CFEAE1BE1D00D0037AA23 /* XFighterUITests.swift */; };
+		199CFEC81BE1E96E0037AA23 /* ship_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 199CFEC51BE1E96E0037AA23 /* ship_01.png */; };
+		199CFEC91BE1E96E0037AA23 /* ship_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 199CFEC61BE1E96E0037AA23 /* ship_02.png */; };
+		199CFECA1BE1E96E0037AA23 /* ship_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 199CFEC71BE1E96E0037AA23 /* ship_03.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +44,6 @@
 		199CFE8E1BE1D00C0037AA23 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		199CFE901BE1D00C0037AA23 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		199CFE931BE1D00C0037AA23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		199CFE951BE1D00C0037AA23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		199CFE981BE1D00C0037AA23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		199CFE9A1BE1D00C0037AA23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		199CFE9F1BE1D00C0037AA23 /* XFighterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XFighterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +52,9 @@
 		199CFEAA1BE1D00D0037AA23 /* XFighterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XFighterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		199CFEAE1BE1D00D0037AA23 /* XFighterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFighterUITests.swift; sourceTree = "<group>"; };
 		199CFEB01BE1D00D0037AA23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		199CFEC51BE1E96E0037AA23 /* ship_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ship_01.png; sourceTree = "<group>"; };
+		199CFEC61BE1E96E0037AA23 /* ship_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ship_02.png; sourceTree = "<group>"; };
+		199CFEC71BE1E96E0037AA23 /* ship_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ship_03.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,12 +105,12 @@
 		199CFE891BE1D00C0037AA23 /* XFighter */ = {
 			isa = PBXGroup;
 			children = (
+				199CFEC31BE1E96E0037AA23 /* Art */,
 				199CFE8A1BE1D00C0037AA23 /* AppDelegate.swift */,
 				199CFE8C1BE1D00C0037AA23 /* GameScene.sks */,
 				199CFE8E1BE1D00C0037AA23 /* GameScene.swift */,
 				199CFE901BE1D00C0037AA23 /* GameViewController.swift */,
 				199CFE921BE1D00C0037AA23 /* Main.storyboard */,
-				199CFE951BE1D00C0037AA23 /* Assets.xcassets */,
 				199CFE971BE1D00C0037AA23 /* LaunchScreen.storyboard */,
 				199CFE9A1BE1D00C0037AA23 /* Info.plist */,
 			);
@@ -129,6 +133,24 @@
 				199CFEB01BE1D00D0037AA23 /* Info.plist */,
 			);
 			path = XFighterUITests;
+			sourceTree = "<group>";
+		};
+		199CFEC31BE1E96E0037AA23 /* Art */ = {
+			isa = PBXGroup;
+			children = (
+				199CFEC41BE1E96E0037AA23 /* Ship */,
+			);
+			path = Art;
+			sourceTree = "<group>";
+		};
+		199CFEC41BE1E96E0037AA23 /* Ship */ = {
+			isa = PBXGroup;
+			children = (
+				199CFEC51BE1E96E0037AA23 /* ship_01.png */,
+				199CFEC61BE1E96E0037AA23 /* ship_02.png */,
+				199CFEC71BE1E96E0037AA23 /* ship_03.png */,
+			);
+			path = Ship;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,8 +259,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				199CFE8D1BE1D00C0037AA23 /* GameScene.sks in Resources */,
+				199CFEC91BE1E96E0037AA23 /* ship_02.png in Resources */,
 				199CFE991BE1D00C0037AA23 /* LaunchScreen.storyboard in Resources */,
-				199CFE961BE1D00C0037AA23 /* Assets.xcassets in Resources */,
+				199CFEC81BE1E96E0037AA23 /* ship_01.png in Resources */,
+				199CFECA1BE1E96E0037AA23 /* ship_03.png in Resources */,
 				199CFE941BE1D00C0037AA23 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
