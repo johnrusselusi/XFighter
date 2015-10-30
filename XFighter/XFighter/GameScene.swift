@@ -19,6 +19,11 @@ class GameScene: SKScene
     var shipDestination: CGPoint = CGPointZero
     
     let backgroundLayer = SKNode()
+    let playerLayerNode = SKNode()
+    
+    // Buller Properties
+    let bulletLayerNode = SKNode()
+    var bulletInterval: NSTimeInterval = 0
     
     let playableRect: CGRect
     let hudHeight: CGFloat = 90
@@ -42,6 +47,8 @@ class GameScene: SKScene
         shipAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(textures, timePerFrame: 0.1))
         
         super.init(size: size)
+        
+        setupSceneLayers()
     }
     
     required init(coder aDecoder: NSCoder)
@@ -69,14 +76,22 @@ class GameScene: SKScene
         }
         
         lasUpdateTime = currentTime
+        
+        bulletInterval += dt
+        
+        if bulletInterval > 0.15
+        {
+            bulletInterval = 0
+            let playerBullet = Bullet(entityPosition: playerShip.position)
+            bulletLayerNode.addChild(playerBullet)
+            playerBullet.runAction(SKAction.sequence([SKAction.moveByX(0, y: size.height, duration: 1), SKAction.removeFromParent()]))
+        }
+        
         moveBackground()
     }
     
     override func didMoveToView(view: SKView)
     {
-        backgroundLayer.zPosition = -1
-        addChild(backgroundLayer)
-        
         for i in 0...1
         {
             let background = backgroundNode()
@@ -87,7 +102,7 @@ class GameScene: SKScene
         }
 
         playerShip = PlayerShip(entityPosition: CGPoint(x: size.width / 2, y: 100))
-        addChild(playerShip)
+        playerLayerNode.addChild(playerShip)
         startShipAnimation()
     
         debugDrawPlayableArea()
@@ -102,6 +117,17 @@ class GameScene: SKScene
         shape.strokeColor = SKColor.redColor()
         shape.lineWidth = 4.0
         addChild(shape)
+    }
+    
+    func setupSceneLayers()
+    {
+        backgroundLayer.zPosition = -1
+        bulletLayerNode.zPosition = 25
+        playerLayerNode.zPosition = 50
+        
+        addChild(backgroundLayer)
+        addChild(bulletLayerNode)
+        addChild(playerLayerNode)
     }
     
     func moveBackground()
