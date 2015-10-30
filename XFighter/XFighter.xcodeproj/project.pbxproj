@@ -18,6 +18,21 @@
 		199CFEC81BE1E96E0037AA23 /* ship_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 199CFEC51BE1E96E0037AA23 /* ship_01.png */; };
 		199CFEC91BE1E96E0037AA23 /* ship_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 199CFEC61BE1E96E0037AA23 /* ship_02.png */; };
 		199CFECA1BE1E96E0037AA23 /* ship_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 199CFEC71BE1E96E0037AA23 /* ship_03.png */; };
+		19B34BEC1BE3561A00F454A5 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B34BE01BE3561A00F454A5 /* CGFloat+Extensions.swift */; };
+		19B34BED1BE3561A00F454A5 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B34BE11BE3561A00F454A5 /* CGPoint+Extensions.swift */; };
+		19B34BEE1BE3561A00F454A5 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B34BE21BE3561A00F454A5 /* CGVector+Extensions.swift */; };
+		19B34BEF1BE3561A00F454A5 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B34BE31BE3561A00F454A5 /* Int+Extensions.swift */; };
+		19B34BF01BE3561A00F454A5 /* SKAction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B34BE41BE3561A00F454A5 /* SKAction+Extensions.swift */; };
+		19B34BF11BE3561A00F454A5 /* SKAction+SpecialEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B34BE51BE3561A00F454A5 /* SKAction+SpecialEffects.swift */; };
+		19B34BF21BE3561A00F454A5 /* SKColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B34BE61BE3561A00F454A5 /* SKColor+Extensions.swift */; };
+		19B34BF31BE3561A00F454A5 /* SKNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B34BE71BE3561A00F454A5 /* SKNode+Extensions.swift */; };
+		19B34BF41BE3561A00F454A5 /* SKTAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B34BE81BE3561A00F454A5 /* SKTAudio.swift */; };
+		19B34BF51BE3561A00F454A5 /* SKTEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B34BE91BE3561A00F454A5 /* SKTEffects.swift */; };
+		19B34BF61BE3561A00F454A5 /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B34BEA1BE3561A00F454A5 /* SKTTimingFunctions.swift */; };
+		19B34BF71BE3561A00F454A5 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B34BEB1BE3561A00F454A5 /* Vector3.swift */; };
+		19C2011E1BE307C7000E95B2 /* PlayerShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C2011D1BE307C7000E95B2 /* PlayerShip.swift */; };
+		19C201211BE30AA1000E95B2 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C201201BE30AA1000E95B2 /* Entity.swift */; };
+		19C201231BE31D61000E95B2 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C201221BE31D61000E95B2 /* background.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +70,21 @@
 		199CFEC51BE1E96E0037AA23 /* ship_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ship_01.png; sourceTree = "<group>"; };
 		199CFEC61BE1E96E0037AA23 /* ship_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ship_02.png; sourceTree = "<group>"; };
 		199CFEC71BE1E96E0037AA23 /* ship_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ship_03.png; sourceTree = "<group>"; };
+		19B34BE01BE3561A00F454A5 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
+		19B34BE11BE3561A00F454A5 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
+		19B34BE21BE3561A00F454A5 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
+		19B34BE31BE3561A00F454A5 /* Int+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		19B34BE41BE3561A00F454A5 /* SKAction+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKAction+Extensions.swift"; sourceTree = "<group>"; };
+		19B34BE51BE3561A00F454A5 /* SKAction+SpecialEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKAction+SpecialEffects.swift"; sourceTree = "<group>"; };
+		19B34BE61BE3561A00F454A5 /* SKColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKColor+Extensions.swift"; sourceTree = "<group>"; };
+		19B34BE71BE3561A00F454A5 /* SKNode+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKNode+Extensions.swift"; sourceTree = "<group>"; };
+		19B34BE81BE3561A00F454A5 /* SKTAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTAudio.swift; sourceTree = "<group>"; };
+		19B34BE91BE3561A00F454A5 /* SKTEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTEffects.swift; sourceTree = "<group>"; };
+		19B34BEA1BE3561A00F454A5 /* SKTTimingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTTimingFunctions.swift; sourceTree = "<group>"; };
+		19B34BEB1BE3561A00F454A5 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
+		19C2011D1BE307C7000E95B2 /* PlayerShip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerShip.swift; sourceTree = "<group>"; };
+		19C201201BE30AA1000E95B2 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		19C201221BE31D61000E95B2 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				199CFEC31BE1E96E0037AA23 /* Art */,
+				19C2011F1BE30A7A000E95B2 /* Entities */,
+				19B34BDF1BE3561A00F454A5 /* SKTUtils */,
 				199CFE8A1BE1D00C0037AA23 /* AppDelegate.swift */,
 				199CFE8C1BE1D00C0037AA23 /* GameScene.sks */,
 				199CFE8E1BE1D00C0037AA23 /* GameScene.swift */,
@@ -138,6 +170,7 @@
 		199CFEC31BE1E96E0037AA23 /* Art */ = {
 			isa = PBXGroup;
 			children = (
+				19C201221BE31D61000E95B2 /* background.png */,
 				199CFEC41BE1E96E0037AA23 /* Ship */,
 			);
 			path = Art;
@@ -151,6 +184,34 @@
 				199CFEC71BE1E96E0037AA23 /* ship_03.png */,
 			);
 			path = Ship;
+			sourceTree = "<group>";
+		};
+		19B34BDF1BE3561A00F454A5 /* SKTUtils */ = {
+			isa = PBXGroup;
+			children = (
+				19B34BE01BE3561A00F454A5 /* CGFloat+Extensions.swift */,
+				19B34BE11BE3561A00F454A5 /* CGPoint+Extensions.swift */,
+				19B34BE21BE3561A00F454A5 /* CGVector+Extensions.swift */,
+				19B34BE31BE3561A00F454A5 /* Int+Extensions.swift */,
+				19B34BE41BE3561A00F454A5 /* SKAction+Extensions.swift */,
+				19B34BE51BE3561A00F454A5 /* SKAction+SpecialEffects.swift */,
+				19B34BE61BE3561A00F454A5 /* SKColor+Extensions.swift */,
+				19B34BE71BE3561A00F454A5 /* SKNode+Extensions.swift */,
+				19B34BE81BE3561A00F454A5 /* SKTAudio.swift */,
+				19B34BE91BE3561A00F454A5 /* SKTEffects.swift */,
+				19B34BEA1BE3561A00F454A5 /* SKTTimingFunctions.swift */,
+				19B34BEB1BE3561A00F454A5 /* Vector3.swift */,
+			);
+			path = SKTUtils;
+			sourceTree = "<group>";
+		};
+		19C2011F1BE30A7A000E95B2 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				19C2011D1BE307C7000E95B2 /* PlayerShip.swift */,
+				19C201201BE30AA1000E95B2 /* Entity.swift */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +323,7 @@
 				199CFEC91BE1E96E0037AA23 /* ship_02.png in Resources */,
 				199CFE991BE1D00C0037AA23 /* LaunchScreen.storyboard in Resources */,
 				199CFEC81BE1E96E0037AA23 /* ship_01.png in Resources */,
+				19C201231BE31D61000E95B2 /* background.png in Resources */,
 				199CFECA1BE1E96E0037AA23 /* ship_03.png in Resources */,
 				199CFE941BE1D00C0037AA23 /* Main.storyboard in Resources */,
 			);
@@ -288,8 +350,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19B34BED1BE3561A00F454A5 /* CGPoint+Extensions.swift in Sources */,
+				19B34BF51BE3561A00F454A5 /* SKTEffects.swift in Sources */,
+				19B34BF01BE3561A00F454A5 /* SKAction+Extensions.swift in Sources */,
 				199CFE8F1BE1D00C0037AA23 /* GameScene.swift in Sources */,
+				19B34BF31BE3561A00F454A5 /* SKNode+Extensions.swift in Sources */,
+				19C201211BE30AA1000E95B2 /* Entity.swift in Sources */,
+				19B34BF61BE3561A00F454A5 /* SKTTimingFunctions.swift in Sources */,
+				19B34BF11BE3561A00F454A5 /* SKAction+SpecialEffects.swift in Sources */,
+				19B34BEF1BE3561A00F454A5 /* Int+Extensions.swift in Sources */,
+				19B34BF71BE3561A00F454A5 /* Vector3.swift in Sources */,
+				19C2011E1BE307C7000E95B2 /* PlayerShip.swift in Sources */,
+				19B34BF21BE3561A00F454A5 /* SKColor+Extensions.swift in Sources */,
+				19B34BEE1BE3561A00F454A5 /* CGVector+Extensions.swift in Sources */,
 				199CFE911BE1D00C0037AA23 /* GameViewController.swift in Sources */,
+				19B34BF41BE3561A00F454A5 /* SKTAudio.swift in Sources */,
+				19B34BEC1BE3561A00F454A5 /* CGFloat+Extensions.swift in Sources */,
 				199CFE8B1BE1D00C0037AA23 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,6 +601,7 @@
 				199CFEB51BE1D00D0037AA23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		199CFEB61BE1D00D0037AA23 /* Build configuration list for PBXNativeTarget "XFighterTests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +610,7 @@
 				199CFEB81BE1D00D0037AA23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		199CFEB91BE1D00D0037AA23 /* Build configuration list for PBXNativeTarget "XFighterUITests" */ = {
 			isa = XCConfigurationList;
@@ -541,6 +619,7 @@
 				199CFEBB1BE1D00D0037AA23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
