@@ -21,7 +21,7 @@ class GameScene: SKScene
     let backgroundLayer = SKNode()
     let playerLayerNode = SKNode()
     
-    // Buller Properties
+    // Bullet Properties
     let bulletLayerNode = SKNode()
     var bulletInterval: NSTimeInterval = 0
     
