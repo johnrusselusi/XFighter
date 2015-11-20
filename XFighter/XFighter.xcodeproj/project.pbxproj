@@ -30,6 +30,8 @@
 		19B34BF51BE3561A00F454A5 /* SKTEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B34BE91BE3561A00F454A5 /* SKTEffects.swift */; };
 		19B34BF61BE3561A00F454A5 /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B34BEA1BE3561A00F454A5 /* SKTTimingFunctions.swift */; };
 		19B34BF71BE3561A00F454A5 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B34BEB1BE3561A00F454A5 /* Vector3.swift */; };
+		19B34BFB1BE360DF00F454A5 /* beams.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 19B34BFA1BE360DF00F454A5 /* beams.atlas */; };
+		19B34BFD1BE360FB00F454A5 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B34BFC1BE360FB00F454A5 /* Bullet.swift */; };
 		19C2011E1BE307C7000E95B2 /* PlayerShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C2011D1BE307C7000E95B2 /* PlayerShip.swift */; };
 		19C201211BE30AA1000E95B2 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C201201BE30AA1000E95B2 /* Entity.swift */; };
 		19C201231BE31D61000E95B2 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C201221BE31D61000E95B2 /* background.png */; };
@@ -82,6 +84,8 @@
 		19B34BE91BE3561A00F454A5 /* SKTEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTEffects.swift; sourceTree = "<group>"; };
 		19B34BEA1BE3561A00F454A5 /* SKTTimingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTTimingFunctions.swift; sourceTree = "<group>"; };
 		19B34BEB1BE3561A00F454A5 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
+		19B34BFA1BE360DF00F454A5 /* beams.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = beams.atlas; sourceTree = "<group>"; };
+		19B34BFC1BE360FB00F454A5 /* Bullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 		19C2011D1BE307C7000E95B2 /* PlayerShip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerShip.swift; sourceTree = "<group>"; };
 		19C201201BE30AA1000E95B2 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		19C201221BE31D61000E95B2 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 		199CFEC31BE1E96E0037AA23 /* Art */ = {
 			isa = PBXGroup;
 			children = (
+				19B34BFA1BE360DF00F454A5 /* beams.atlas */,
 				19C201221BE31D61000E95B2 /* background.png */,
 				199CFEC41BE1E96E0037AA23 /* Ship */,
 			);
@@ -209,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				19C2011D1BE307C7000E95B2 /* PlayerShip.swift */,
+				19B34BFC1BE360FB00F454A5 /* Bullet.swift */,
 				19C201201BE30AA1000E95B2 /* Entity.swift */,
 			);
 			name = Entities;
@@ -325,6 +331,7 @@
 				199CFEC81BE1E96E0037AA23 /* ship_01.png in Resources */,
 				19C201231BE31D61000E95B2 /* background.png in Resources */,
 				199CFECA1BE1E96E0037AA23 /* ship_03.png in Resources */,
+				19B34BFB1BE360DF00F454A5 /* beams.atlas in Resources */,
 				199CFE941BE1D00C0037AA23 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,6 +374,7 @@
 				19B34BF41BE3561A00F454A5 /* SKTAudio.swift in Sources */,
 				19B34BEC1BE3561A00F454A5 /* CGFloat+Extensions.swift in Sources */,
 				199CFE8B1BE1D00C0037AA23 /* AppDelegate.swift in Sources */,
+				19B34BFD1BE360FB00F454A5 /* Bullet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
