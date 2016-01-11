@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1927259A1BFED3FA00E85B7F /* ship_texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 192725991BFED3FA00E85B7F /* ship_texture.png */; };
+		19986A171BFEA71D004F053B /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19986A161BFEA71D004F053B /* Enemy.swift */; };
+		19986A191BFEA83E004F053B /* explosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 19986A181BFEA83E004F053B /* explosion.atlas */; };
+		19986A1D1BFEAA2F004F053B /* AISteering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19986A1C1BFEAA2F004F053B /* AISteering.swift */; };
+		19986A241BFEC1A2004F053B /* enemy.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 19986A231BFEC1A2004F053B /* enemy.atlas */; };
 		199CFE8B1BE1D00C0037AA23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199CFE8A1BE1D00C0037AA23 /* AppDelegate.swift */; };
 		199CFE8D1BE1D00C0037AA23 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 199CFE8C1BE1D00C0037AA23 /* GameScene.sks */; };
 		199CFE8F1BE1D00C0037AA23 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199CFE8E1BE1D00C0037AA23 /* GameScene.swift */; };
@@ -55,6 +60,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		192725991BFED3FA00E85B7F /* ship_texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ship_texture.png; sourceTree = "<group>"; };
+		19986A161BFEA71D004F053B /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
+		19986A181BFEA83E004F053B /* explosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = explosion.atlas; sourceTree = "<group>"; };
+		19986A1C1BFEAA2F004F053B /* AISteering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISteering.swift; sourceTree = "<group>"; };
+		19986A231BFEC1A2004F053B /* enemy.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = enemy.atlas; sourceTree = "<group>"; };
 		199CFE871BE1D00C0037AA23 /* XFighter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XFighter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		199CFE8A1BE1D00C0037AA23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		199CFE8C1BE1D00C0037AA23 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -116,6 +126,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19986A1E1BFEAA34004F053B /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				19986A1C1BFEAA2F004F053B /* AISteering.swift */,
+			);
+			name = AI;
+			sourceTree = "<group>";
+		};
 		199CFE7E1BE1D00C0037AA23 = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +157,7 @@
 		199CFE891BE1D00C0037AA23 /* XFighter */ = {
 			isa = PBXGroup;
 			children = (
+				19986A1E1BFEAA34004F053B /* AI */,
 				199CFEC31BE1E96E0037AA23 /* Art */,
 				19C2011F1BE30A7A000E95B2 /* Entities */,
 				19B34BDF1BE3561A00F454A5 /* SKTUtils */,
@@ -174,8 +193,10 @@
 		199CFEC31BE1E96E0037AA23 /* Art */ = {
 			isa = PBXGroup;
 			children = (
-				19B34BFA1BE360DF00F454A5 /* beams.atlas */,
 				19C201221BE31D61000E95B2 /* background.png */,
+				19986A231BFEC1A2004F053B /* enemy.atlas */,
+				19B34BFA1BE360DF00F454A5 /* beams.atlas */,
+				19986A181BFEA83E004F053B /* explosion.atlas */,
 				199CFEC41BE1E96E0037AA23 /* Ship */,
 			);
 			path = Art;
@@ -184,6 +205,7 @@
 		199CFEC41BE1E96E0037AA23 /* Ship */ = {
 			isa = PBXGroup;
 			children = (
+				192725991BFED3FA00E85B7F /* ship_texture.png */,
 				199CFEC51BE1E96E0037AA23 /* ship_01.png */,
 				199CFEC61BE1E96E0037AA23 /* ship_02.png */,
 				199CFEC71BE1E96E0037AA23 /* ship_03.png */,
@@ -213,9 +235,10 @@
 		19C2011F1BE30A7A000E95B2 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				19C2011D1BE307C7000E95B2 /* PlayerShip.swift */,
 				19B34BFC1BE360FB00F454A5 /* Bullet.swift */,
+				19986A161BFEA71D004F053B /* Enemy.swift */,
 				19C201201BE30AA1000E95B2 /* Entity.swift */,
+				19C2011D1BE307C7000E95B2 /* PlayerShip.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -326,10 +349,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				199CFE8D1BE1D00C0037AA23 /* GameScene.sks in Resources */,
+				1927259A1BFED3FA00E85B7F /* ship_texture.png in Resources */,
 				199CFEC91BE1E96E0037AA23 /* ship_02.png in Resources */,
 				199CFE991BE1D00C0037AA23 /* LaunchScreen.storyboard in Resources */,
 				199CFEC81BE1E96E0037AA23 /* ship_01.png in Resources */,
 				19C201231BE31D61000E95B2 /* background.png in Resources */,
+				19986A191BFEA83E004F053B /* explosion.atlas in Resources */,
+				19986A241BFEC1A2004F053B /* enemy.atlas in Resources */,
 				199CFECA1BE1E96E0037AA23 /* ship_03.png in Resources */,
 				19B34BFB1BE360DF00F454A5 /* beams.atlas in Resources */,
 				199CFE941BE1D00C0037AA23 /* Main.storyboard in Resources */,
@@ -366,6 +392,7 @@
 				19B34BF61BE3561A00F454A5 /* SKTTimingFunctions.swift in Sources */,
 				19B34BF11BE3561A00F454A5 /* SKAction+SpecialEffects.swift in Sources */,
 				19B34BEF1BE3561A00F454A5 /* Int+Extensions.swift in Sources */,
+				19986A171BFEA71D004F053B /* Enemy.swift in Sources */,
 				19B34BF71BE3561A00F454A5 /* Vector3.swift in Sources */,
 				19C2011E1BE307C7000E95B2 /* PlayerShip.swift in Sources */,
 				19B34BF21BE3561A00F454A5 /* SKColor+Extensions.swift in Sources */,
@@ -374,6 +401,7 @@
 				19B34BF41BE3561A00F454A5 /* SKTAudio.swift in Sources */,
 				19B34BEC1BE3561A00F454A5 /* CGFloat+Extensions.swift in Sources */,
 				199CFE8B1BE1D00C0037AA23 /* AppDelegate.swift in Sources */,
+				19986A1D1BFEAA2F004F053B /* AISteering.swift in Sources */,
 				19B34BFD1BE360FB00F454A5 /* Bullet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

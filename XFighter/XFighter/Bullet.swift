@@ -21,6 +21,8 @@ class Bullet: Entity
         
         super.init(position: entityPosition, texture: entityTexture)
         name = "bullet"
+        
+        configureCollisionBody()
     }
     
     override class func generateTexture() -> SKTexture?
@@ -33,7 +35,7 @@ class Bullet: Entity
         
         dispatch_once(&SharedTexture.onceToken,
             {
-                let bullet = SKSpriteNode(imageNamed: "beam49")
+                let bullet = SKSpriteNode(imageNamed: "beam40")
                 bullet.name = "bullet"
                 bullet.size = CGSize(width: 40, height: 50)
                 
@@ -45,4 +47,19 @@ class Bullet: Entity
         return SharedTexture.texture
     }
     
+    func configureCollisionBody()
+    {
+        let bulletTexture = SKTexture(imageNamed: "beam40")
+        
+        physicsBody = SKPhysicsBody(texture: bulletTexture, size: size)
+        physicsBody?.affectedByGravity = false
+        physicsBody?.categoryBitMask = PhysicsCategory.Bullet
+        physicsBody?.collisionBitMask = 0
+        physicsBody?.contactTestBitMask = PhysicsCategory.EnemyShip
+    }
+    
+    override func collidedWith(body: SKPhysicsBody, contact: SKPhysicsContact)
+    {
+        removeFromParent()
+    }
 }

@@ -1,45 +1,48 @@
 //
-//  Ship.swift
+//  Enemy.swift
 //  XFighter
 //
-//  Created by John Russel Usi on 10/30/15.
+//  Created by John Russel Usi on 11/20/15.
 //  Copyright © 2015 CYS. All rights reserved.
 //
 
 import Foundation
 import SpriteKit
 
-class PlayerShip: Entity
+class Enemy: Entity
 {
     var enemyExplodeAnimation = SKAction()
-
     
     let healthMeterLabel = SKLabelNode(fontNamed: "Arial")
     let healthMeterText: NSString = "________"
     
+    var aiSteering: AISteering!
     var health = 100.0
     var damagePerHit = 10.0
     
-    required init?(coder aDecoder: NSCoder)
-    {
-        super.init(coder: aDecoder)
-    }
-    
     override func update(delta: NSTimeInterval)
     {
+        if aiSteering.waypointReached
+        {
+            let mainScene = scene as! GameScene
+            aiSteering.updateWaypoint(mainScene.playerShip.position)
+        }
+        
+        aiSteering.update(delta)
+        
         let healthBarLength = 8.0 * health / 100
         healthMeterLabel.text = "\(healthMeterText.substringToIndex(Int(healthBarLength)))"
         healthMeterLabel.fontColor = SKColor(red: CGFloat(2 * (1 - health / 100)),
             green:CGFloat(2 * health / 100), blue:0, alpha:1)
     }
     
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+    }
+    
     init(entityPosition: CGPoint)
     {
-        let entityTexture = PlayerShip.generateTexture()!
-        
-        super.init(position: entityPosition, texture: entityTexture)
-        name = "mainShip"
-        
         var explosionTextures: [SKTexture] = []
         
         for i in 1...4
@@ -48,6 +51,14 @@ class PlayerShip: Entity
         }
         
         enemyExplodeAnimation = SKAction.animateWithTextures(explosionTextures, timePerFrame: 0.1)
+        
+        let entityTexture = Enemy.generateTexture()!
+        
+        super.init(position: entityPosition, texture: entityTexture)
+        name = "enemyShip"
+        
+        aiSteering = AISteering(entity: self, waypoint: CGPointZero)
+        configureHealthBar()
         configureCollisionBody()
     }
     
@@ -61,32 +72,21 @@ class PlayerShip: Entity
         
         dispatch_once(&SharedTexture.onceToken,
             {
-                let mainShip = SKSpriteNode(imageNamed: "ship_01")
-                mainShip.name = "mainShip"
+                let enemyShip = SKSpriteNode(imageNamed: "enemy_big01")
+                enemyShip.name = "enemyShip"
+                enemyShip.size = CGSizeMake(50, 50)
                 
                 let textureView = SKView()
-                SharedTexture.texture = textureView.textureFromNode(mainShip)!
+                SharedTexture.texture = textureView.textureFromNode(enemyShip)!
                 SharedTexture.texture.filteringMode = .Nearest
         })
         
         return SharedTexture.texture
     }
     
-    func configureCollisionBody()
-    {
-        let shipTexture = SKTexture(imageNamed: "ship_texture")
-        
-        physicsBody = SKPhysicsBody(texture: shipTexture, size: size)
-        
-        //physicsBody?.mass = 0.05
-        physicsBody?.affectedByGravity = false
-        physicsBody?.categoryBitMask = PhysicsCategory.PlayerShip
-        physicsBody?.collisionBitMask = 0
-        physicsBody?.contactTestBitMask = PhysicsCategory.EnemyShip
-    }
-    
     override func collidedWith(body: SKPhysicsBody, contact: SKPhysicsContact)
     {
+        removeAllActions()
         if health > 0
         {
             health -= damagePerHit
@@ -95,5 +95,24 @@ class PlayerShip: Entity
         {
             runAction(SKAction.sequence([enemyExplodeAnimation, SKAction.removeFromParent()]))
         }
+    }
+    
+    func configureHealthBar()
+    {
+        healthMeterLabel.name = "healthMeter"
+        healthMeterLabel.text = healthMeterText as String
+        healthMeterLabel.fontSize = 20
+        healthMeterLabel.fontColor = SKColor.greenColor()
+        healthMeterLabel.position = CGPointMake(0, 30)
+        addChild(healthMeterLabel)
+    }
+    
+    func configureCollisionBody()
+    {
+        physicsBody = SKPhysicsBody(rectangleOfSize: frame.size)
+        physicsBody?.affectedByGravity = false
+        physicsBody?.categoryBitMask = PhysicsCategory.EnemyShip
+        physicsBody?.collisionBitMask = 0
+        physicsBody?.contactTestBitMask = PhysicsCategory.Bullet | PhysicsCategory.PlayerShip
     }
 }

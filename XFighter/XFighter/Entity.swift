@@ -8,11 +8,16 @@
 
 import SpriteKit
 
+struct PhysicsCategory
+{
+    static var PlayerShip: UInt32 = 1
+    static var EnemyShip: UInt32 = 2
+    static var Bullet: UInt32 = 4
+}
+
 class Entity: SKSpriteNode
 {
     var direction = CGPointZero
-    var health = 100.0
-    var maxHealth = 100.0
     
     required init?(coder aDecoder: NSCoder)
     {
@@ -28,5 +33,14 @@ class Entity: SKSpriteNode
     class func generateTexture() -> SKTexture?
     {
         return nil
+    }
+    
+    func update(delta: NSTimeInterval) {
+        // Overridden by subclasses
+    }
+    
+    func collidedWith(body: SKPhysicsBody, contact: SKPhysicsContact) {
+        // Overridden by subsclasses to implement actions to be carried out when an entity
+        // collides with another entity e.g. PlayerShip or Bullet
     }
 }

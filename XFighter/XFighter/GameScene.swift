@@ -7,23 +7,38 @@
 //
 
 import SpriteKit
+import CoreMotion
 
-class GameScene: SKScene
+@IBDesignable
+class GameScene: SKScene, SKPhysicsContactDelegate
 {
+    let motionManager: CMMotionManager = CMMotionManager()
+    
+    let healthBarString: NSString = "======================"
+    let playerHealthLabel = SKLabelNode(fontNamed: "Arial")
+    
+    var firstPath = UIBezierPath()
+    
     var lasUpdateTime : NSTimeInterval = 0
     var dt : NSTimeInterval = 0
-    let backgroundMovePointsPerSec: CGFloat = 200.0
+    let backgroundMovePointsPerSec: CGFloat = 1000
     
+    let randomPath = UIBezierPath()
+    
+    var isGameOVer: Bool = false
     var playerShip: PlayerShip!
-    let shipAnimation: SKAction
     var shipDestination: CGPoint = CGPointZero
+    let shipAnimation: SKAction
     
     let backgroundLayer = SKNode()
     let playerLayerNode = SKNode()
     
     // Bullet Properties
-    let bulletLayerNode = SKNode()
     var bulletInterval: NSTimeInterval = 0
+    let bulletLayerNode = SKNode()
+    
+    // Enemy Properties
+    let enemyLayerNode = SKNode()
     
     let playableRect: CGRect
     let hudHeight: CGFloat = 90
@@ -47,8 +62,9 @@ class GameScene: SKScene
         shipAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(textures, timePerFrame: 0.1))
         
         super.init(size: size)
-        
+
         setupSceneLayers()
+        setupEntities()
     }
     
     required init(coder aDecoder: NSCoder)
@@ -79,7 +95,7 @@ class GameScene: SKScene
         
         bulletInterval += dt
         
-        if bulletInterval > 0.15
+        if bulletInterval > 0.5 && !isGameOVer
         {
             bulletInterval = 0
             let playerBullet = Bullet(entityPosition: playerShip.position)
@@ -87,11 +103,23 @@ class GameScene: SKScene
             playerBullet.runAction(SKAction.sequence([SKAction.moveByX(0, y: size.height, duration: 1), SKAction.removeFromParent()]))
         }
         
+        for node in enemyLayerNode.children
+        {
+            let enemy = node as! Enemy
+            enemy.update(self.dt)
+        }
+        
+        let healthBarLength = Double(healthBarString.length) * playerShip.health / 100.0
+        playerHealthLabel.text = healthBarString.substringToIndex(Int(healthBarLength))
+        
+        processUserMotionForUpdate(currentTime)
         moveBackground()
     }
     
     override func didMoveToView(view: SKView)
     {
+        motionManager.startAccelerometerUpdates()
+        
         for i in 0...1
         {
             let background = backgroundNode()
@@ -100,12 +128,12 @@ class GameScene: SKScene
             background.name = "background"
             backgroundLayer.addChild(background)
         }
+        
+        physicsWorld.contactDelegate = self
 
-        playerShip = PlayerShip(entityPosition: CGPoint(x: size.width / 2, y: 100))
-        playerLayerNode.addChild(playerShip)
         startShipAnimation()
-    
         debugDrawPlayableArea()
+        drawHealthBar()
     }
     
     func debugDrawPlayableArea()
@@ -119,17 +147,80 @@ class GameScene: SKScene
         addChild(shape)
     }
     
+    func drawHealthBar()
+    {
+        let healthBarBackground = SKSpriteNode(color: SKColor.blackColor(), size: CGSize(width: size.width, height: 90))
+        healthBarBackground.anchorPoint = CGPointZero
+        
+        // 1
+        let playerHealthBackgroundLabel =
+        SKLabelNode(fontNamed: "Arial")
+        playerHealthBackgroundLabel.name = "playerHealthBackground"
+        playerHealthBackgroundLabel.fontColor = SKColor.darkGrayColor()
+        playerHealthBackgroundLabel.fontSize = 50
+        playerHealthBackgroundLabel.text = healthBarString as String
+        playerHealthBackgroundLabel.zPosition = 200
+        // 2
+        playerHealthBackgroundLabel.horizontalAlignmentMode = .Left
+        playerHealthBackgroundLabel.verticalAlignmentMode = .Top
+        playerHealthBackgroundLabel.position = CGPoint(
+            x: CGRectGetMinX(playableRect),
+            y: CGRectGetMidY(playableRect) - (size.height / 2) + 25)
+        addChild(playerHealthBackgroundLabel)
+        // 3
+        playerHealthLabel.name = "playerHealthLabel"
+        playerHealthLabel.fontColor = SKColor.greenColor()
+        playerHealthLabel.fontSize = 50
+        playerHealthLabel.text =
+            healthBarString.substringToIndex(20*75/100)
+        playerHealthLabel.zPosition = 201
+        playerHealthLabel.horizontalAlignmentMode = .Left
+        playerHealthLabel.verticalAlignmentMode = .Top
+        playerHealthLabel.position = CGPoint(
+            x: CGRectGetMinX(playableRect),
+            y: CGRectGetMidY(playableRect) - (size.height / 2) + 25)
+        addChild(playerHealthLabel)
+    }
+    
     func setupSceneLayers()
     {
         backgroundLayer.zPosition = -1
         bulletLayerNode.zPosition = 25
         playerLayerNode.zPosition = 50
+        enemyLayerNode.zPosition = 35
         
+        addChild(playerLayerNode)
         addChild(backgroundLayer)
         addChild(bulletLayerNode)
-        addChild(playerLayerNode)
+        addChild(enemyLayerNode)
     }
     
+    func setupEntities()
+    {
+        playerShip = PlayerShip(entityPosition: CGPoint(x: size.width / 2, y: 100))
+        playerLayerNode.addChild(playerShip)
+        
+        spawnEnemyShips()
+    }
+    
+    func spawnEnemyShips()
+    {
+        for _ in 0..<5
+        {
+            let enemy = Enemy(entityPosition: generateRandomPoint(playableRect))
+
+            enemyLayerNode.addChild(enemy)
+        }
+    }
+    
+    func generateRandomPoint(bounds: CGRect) ->CGPoint
+    {
+        let randomX = CGRectGetMinX(bounds) + CGFloat(arc4random()) % CGRectGetWidth(bounds)
+        let randomY = CGRectGetMidY(bounds) + CGFloat(arc4random()) % CGRectGetHeight(bounds)
+        
+        return CGPointMake(randomX, randomY)
+    }
+
     func moveBackground()
     {
         let backgroundVelocity = CGPoint(x: 0, y: -backgroundMovePointsPerSec)
@@ -219,5 +310,36 @@ class GameScene: SKScene
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?)
     {
         deltaPoint = CGPointZero
+    }
+    
+    func didBeginContact(contact: SKPhysicsContact)
+    {
+        if let enemyNode = contact.bodyA.node
+        {
+            if enemyNode.name == "enemyShip" || enemyNode.name == "mainShip"
+            {
+                let enemy = enemyNode as! Entity
+                enemy.collidedWith(contact.bodyA, contact: contact)
+            }
+        }
+        
+        if let playerNode = contact.bodyB.node
+        {
+            if playerNode.name == "mainShip" || playerNode.name == "bullet"
+            {
+                let player = playerNode as! Entity
+                player.collidedWith(contact.bodyA, contact: contact)
+            }
+        }
+    }
+    
+    func processUserMotionForUpdate(currentTime: CFTimeInterval)
+    {
+        let ship = playerLayerNode.childNodeWithName("mainShip") as! SKSpriteNode
+        
+        if let data = motionManager.accelerometerData
+        {
+            ship.physicsBody!.applyForce(CGVectorMake(40.0 * CGFloat(data.acceleration.x), 40.0 * CGFloat(data.acceleration.y)))
+        }
     }
 }
